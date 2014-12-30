@@ -1,4 +1,8 @@
 #!/bin/sh
+# Set up a Mac the way I like it
+#
+# Kudos:
+# https://gist.github.com/brandonb927/3195465
 
 ######################################################################
 #
@@ -41,6 +45,9 @@ PIP_PACKAGES="\
   ipython \
   readline \
   "
+
+HOSTNAME=""  # Default is not to set hostname
+
 ######################################################################
 
 usage()
@@ -50,6 +57,7 @@ Usage: $0 [<options>]
 
 Options:
   -h              Print help and exit.
+  -H <hostname>   Set hostname
 END
 }
 
@@ -156,12 +164,26 @@ install_macvim() {
 }
 
 ######################################################################
+#
+# Configuration commands
+
+set_hostname() {
+  _hostname=$1
+  message "Setting hostname to ${_hostname}"
+  sudo scutil --set ComputerName ${_hostname}
+  sudo scutil --set HostName ${_hostname}
+  sudo scutil --set LocalHostName ${_hostname}
+  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string ${_hostname}
+}
+
+######################################################################
 
 # Leading colon means silent errors, script will handle them
 # Colon after a parameter, means that parameter has an argument in $OPTARG
-while getopts ":h" opt; do
+while getopts ":hH:" opt; do
   case $opt in
     h) usage ; exit 0 ;;
+    H) HOSTNAME=$OPTARG ;;
     \?) echo "Invalid option: -$OPTARG" >&2 ;;
   esac
 done
@@ -179,6 +201,10 @@ debug() {
 }
 
 ######################################################################
+
+if test -n "${HOSTNAME}" ; then
+  set_hostname ${HOSTNAME}
+fi
 
 install_homebrew
 upgrade_homebrew
