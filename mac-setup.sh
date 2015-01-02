@@ -176,6 +176,13 @@ set_hostname() {
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string ${_hostname}
 }
 
+expand_save_panels() {
+  # Expand save and print panels by default
+  defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+  defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+  defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+}
+
 ######################################################################
 
 # Leading colon means silent errors, script will handle them
@@ -230,6 +237,8 @@ done
 
 # Upgrade pip to work with python3
 pip3 install --upgrade pip
+
+expand_save_panels
 
 echo "Success."
 exit 0
