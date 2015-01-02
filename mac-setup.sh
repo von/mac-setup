@@ -182,6 +182,8 @@ brew_install wget
 brew_install markdown
 brew_install ctags-exuberant
 brew_install gpg2
+brew_install keybase
+keybase config gpg gpg2
 brew_install jrnl
 brew_install mr
 brew_install moreutils
