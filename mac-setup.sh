@@ -8,44 +8,6 @@
 #
 # Configuration
 
-# Home brew formula to install
-FORMULA="\
-  tmux \
-  python \
-  python3 \
-  swig \
-  keychain \
-  pass \
-  git tig \
-  wget \
-  markdown \
-  ctags-exuberant \
-  gpg2 \
-  jrnl \
-  mr \
-  moreutils \
-  vifm \
-  "
-
-CASKS="\
-  google-chrome \
-  google-drive \
-  skype \
-  dropbox \
-  android-file-transfer \
-  totalfinder \
-  wesnoth \
-  firefox \
-  "
-
-PIP_PACKAGES="\
-  pyzmq \
-  tornado \
-  Jinja2 \
-  ipython \
-  readline \
-  "
-
 HOSTNAME=""  # Default is not to set hostname
 
 ######################################################################
@@ -155,14 +117,6 @@ install_cask() {
   brew_install caskroom/cask/brew-cask
 }
 
-install_macvim() {
-  # Overrides older version that comes with MacOSX
-  brew_install macvim --override-system-vim
-  echo "MacVim installed."
-  echo "Note you may need to rebuild YouCompleteMe to pick up new python"
-  echo "  libraries."
-}
-
 ######################################################################
 #
 # Configuration commands
@@ -216,24 +170,42 @@ fi
 install_homebrew
 upgrade_homebrew
 
-for formula in ${FORMULA} ; do
-  brew_install ${formula}
-done
-
-install_macvim
-
-# For tmux
+brew_install tmux
 brew_install reattach-to-user-namespace --wrap-pbcopy-and-pbpaste
+brew_install python
+brew_install python3
+brew_install swig
+brew_install keychain
+brew_install pass
+brew_install git tig
+brew_install wget
+brew_install markdown
+brew_install ctags-exuberant
+brew_install gpg2
+brew_install jrnl
+brew_install mr
+brew_install moreutils
+brew_install vifm
+
+# Overrides older version that comes with MacOSX
+brew_install macvim --override-system-vim
 
 install_cask
 
-for cask in ${CASKS} ; do
-  cask_install ${cask}
-done
+cask_install google-chrome
+cask_install google-drive
+cask_install skype
+cask_install dropbox
+cask_install android-file-transfer
+cask_install totalfinder
+cask_install wesnoth
+cask_install firefox
 
-for package in ${PIP_PACKAGES} ; do
-  pip_install ${package}
-done
+pip_install pyzmq
+pip_install tornado
+pip_install Jinja2
+pip_install ipython
+pip_install readline
 
 # Upgrade pip to work with python3
 pip3 install --upgrade pip
