@@ -202,6 +202,7 @@ cask_install android-file-transfer
 cask_install totalfinder
 cask_install wesnoth
 cask_install firefox
+cask_install sketchup
 
 pip_install pyzmq
 pip_install tornado
