@@ -30,7 +30,7 @@ END
 BREW="brew"
 PIP="pip"
 RUBY="ruby"
-SUDO="sudo"
+SUDO="sudo -H"  # -H sets $HOME to target user
 
 ######################################################################
 #
@@ -56,7 +56,7 @@ brew_install() {
   _formula=$1
   message "Installing brew formula \"${@}\""
   brew_installed ${_formula} && return 0
-  ${BREW} install ${_formula} "${@}"
+  ${SUDO} ${BREW} install ${_formula} "${@}"
 }
 
 cask_installed() {
@@ -73,7 +73,7 @@ cask_install() {
   _formula=$1
   message "Installing cask formula \"${@}\""
   cask_installed ${_formula} && return 0
-  ${BREW} cask install ${_formula} "${@}"
+  ${SUDO} ${BREW} cask install ${_formula} "${@}"
 }
 
 ######################################################################
@@ -92,7 +92,7 @@ pip_install() {
   _package=$1
   message "Installing python package \"${@}\""
   pip_installed ${_package} && return 0
-  ${PIP} install ${_package}
+  ${SUDO} ${PIP} install ${_package}
 }
 
 ######################################################################
@@ -102,14 +102,14 @@ pip_install() {
 install_homebrew() {
   # http://brew.sh
   command -v ${BREW} >/dev/null 2>&1 && return 0
-  ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  ${BREW} doctor
+  ${SUDO} ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ${SUDO} ${BREW} doctor
 }
 
 upgrade_homebrew() {
   echo "Updating homebrew"
-  ${BREW} update
-  ${BREW} upgrade
+  ${SUDO} ${BREW} update
+  ${SUDO} ${BREW} upgrade
 }
 
 install_cask() {
