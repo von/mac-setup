@@ -54,8 +54,8 @@ brew_install() {
   # Install formula if not already installed
   # Arguments: forumla [<options>]
   _formula=$1
-  message "Installing brew formula \"${@}\""
   brew_installed ${_formula} && return 0
+  message "Installing brew formula \"${@}\""
   ${SUDO} ${BREW} install ${_formula} "${@}"
 }
 
@@ -71,8 +71,8 @@ cask_install() {
   # Install cask formula if not already installed
   # Arguments: forumla [<options>]
   _formula=$1
-  message "Installing cask formula \"${@}\""
   cask_installed ${_formula} && return 0
+  message "Installing cask formula \"${@}\""
   ${SUDO} ${BREW} cask install ${_formula} "${@}"
 }
 
@@ -90,8 +90,8 @@ pip_installed() {
 
 pip_install() {
   _package=$1
-  message "Installing python package \"${@}\""
   pip_installed ${_package} && return 0
+  message "Installing python package \"${@}\""
   ${SUDO} ${PIP} install ${_package}
 }
 
@@ -102,6 +102,7 @@ pip_install() {
 install_homebrew() {
   # http://brew.sh
   command -v ${BREW} >/dev/null 2>&1 && return 0
+  message "Installing Homebrew"
   ${SUDO} ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   ${SUDO} ${BREW} doctor
 }
@@ -212,6 +213,7 @@ pip_install readline
 pip_install pythonpy  # https://github.com/Russell91/pythonpy/
 
 # Upgrade pip to work with python3
+message "Upgrading pip3"
 pip3 install --upgrade pip
 
 expand_save_panels
