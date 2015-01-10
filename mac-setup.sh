@@ -92,7 +92,7 @@ pip_install() {
   _package=$1
   message "Installing python package \"${@}\""
   pip_installed ${_package} && return 0
-  ${PIP} install ${package}
+  ${PIP} install ${_package}
 }
 
 ######################################################################
