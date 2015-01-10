@@ -209,6 +209,7 @@ pip_install tornado
 pip_install Jinja2
 pip_install ipython
 pip_install readline
+pip_install pythonpy  # https://github.com/Russell91/pythonpy/
 
 # Upgrade pip to work with python3
 pip3 install --upgrade pip
