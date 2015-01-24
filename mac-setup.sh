@@ -214,6 +214,7 @@ pip_install pythonpy  # https://github.com/Russell91/pythonpy/
 pip_install percol  # https://github.com/mooz/percol
 pip_install wget
 pip_install colorama
+pip_install uuid
 
 # Upgrade pip to work with python3
 message "Upgrading pip3"
