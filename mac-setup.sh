@@ -212,7 +212,8 @@ pip_install Jinja2
 pip_install ipython
 pip_install readline
 pip_install pythonpy  # https://github.com/Russell91/pythonpy/
-pip_install percol  # https://github.com/mooz/percol
+# No python3 support
+#pip_install percol  # https://github.com/mooz/percol
 pip_install wget
 pip_install colorama
 pip_install uuid
