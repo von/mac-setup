@@ -205,6 +205,7 @@ cask_install totalfinder
 cask_install wesnoth
 cask_install firefox
 cask_install sketchup
+cask_install hipchat
 
 pip_install pyzmq
 pip_install tornado
