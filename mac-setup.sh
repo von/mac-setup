@@ -213,6 +213,7 @@ cask_install wesnoth
 cask_install firefox
 cask_install sketchup
 cask_install hipchat
+cask_install picasa
 
 pip_install pyzmq
 pip_install tornado
