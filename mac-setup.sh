@@ -95,6 +95,13 @@ pip_install() {
   ${SUDO} ${PIP} install ${_package}
 }
 
+# Update all python packages
+# Kudos: http://stackoverflow.com/a/3452888
+pip_update() {
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U
+  ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${SUDO} ${PIP} install -U
+}
+
 ######################################################################
 #
 # Top-level installation commands
@@ -222,6 +229,8 @@ pip_install uuid
 # Upgrade pip to work with python3
 message "Upgrading pip3"
 pip3 install --upgrade pip
+
+pip_update
 
 expand_save_panels
 
