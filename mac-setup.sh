@@ -214,6 +214,8 @@ cask_install firefox
 cask_install sketchup
 cask_install hipchat
 cask_install picasa
+cask_install handbrake
+cask_install handbrakecli
 
 pip_install pyzmq
 pip_install tornado
