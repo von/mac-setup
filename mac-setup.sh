@@ -147,6 +147,16 @@ expand_save_panels() {
 
 ######################################################################
 
+message() {
+  echo $*
+}
+
+debug() {
+  echo $*
+}
+
+######################################################################
+
 # Leading colon means silent errors, script will handle them
 # Colon after a parameter, means that parameter has an argument in $OPTARG
 while getopts ":hH:" opt; do
@@ -158,16 +168,6 @@ while getopts ":hH:" opt; do
 done
 
 shift $(($OPTIND - 1))
-
-######################################################################
-
-message() {
-  echo $*
-}
-
-debug() {
-  echo $*
-}
 
 ######################################################################
 
