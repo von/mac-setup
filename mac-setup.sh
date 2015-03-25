@@ -216,7 +216,11 @@ cask_install hipchat
 cask_install picasa
 cask_install handbrake
 cask_install handbrakecli
-# The older harmony software requires Java and seemed to be broken
+# The older logitech-harmony software requires the 'java' package
+# and seems to be broken:
+#     LSOpenURLsWithRole() failed with error -10810 
+# The logitech-myharmony software works with the Harmony One, but not
+# my older 880 remote,
 cask_install logitech-myharmony
 
 pip_install pyzmq
