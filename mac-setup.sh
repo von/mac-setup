@@ -216,6 +216,8 @@ cask_install hipchat
 cask_install picasa
 cask_install handbrake
 cask_install handbrakecli
+# The older harmony software requires Java and seemed to be broken
+cask_install logitech-myharmony
 
 pip_install pyzmq
 pip_install tornado
