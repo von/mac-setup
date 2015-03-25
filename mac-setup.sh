@@ -171,6 +171,14 @@ shift $(($OPTIND - 1))
 
 ######################################################################
 
+# Ask for the administrator password upfront and run a keep-alive to update
+# existing `sudo` time stamp until script has finished
+# Kudos: https://gist.github.com/brandonb927/3195465
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+######################################################################
+
 if test -n "${HOSTNAME}" ; then
   set_hostname ${HOSTNAME}
 fi
