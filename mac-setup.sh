@@ -145,6 +145,11 @@ expand_save_panels() {
   defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 }
 
+finder_config() {
+  # Display full POSIX path as Finder window title
+  defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+}
+
 ######################################################################
 
 message() {
