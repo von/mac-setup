@@ -210,6 +210,7 @@ brew_install jrnl
 brew_install mr
 brew_install moreutils
 brew_install vifm
+brew_install libyaml
 
 # Overrides older version that comes with MacOSX
 brew_install macvim --override-system-vim
@@ -250,6 +251,7 @@ pip_install uuid
 pip_install pyCLI  # https://pythonhosted.org/pyCLI/
 pip_install path.py  # https://github.com/jaraco/path.py
 pip_install requests  # http://docs.python-requests.org/
+pip_install pyyaml  # Requires libyaml
 
 # Upgrade pip to work with python3
 message "Upgrading pip3"
