@@ -247,6 +247,9 @@ pip_install pythonpy  # https://github.com/Russell91/pythonpy/
 pip_install wget
 pip_install colorama
 pip_install uuid
+pip_install pyCLI  # https://pythonhosted.org/pyCLI/
+pip_install path.py  # https://github.com/jaraco/path.py
+pip_install requests  # http://docs.python-requests.org/
 
 # Upgrade pip to work with python3
 message "Upgrading pip3"
