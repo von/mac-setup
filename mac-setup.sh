@@ -228,6 +228,8 @@ cask_install firefox
 cask_install sketchup
 cask_install hipchat
 cask_install picasa
+cask_install spark  # http://www.shadowlab.org/Software/spark.php
+cask_install plain-clip  # http://www.bluem.net/en/mac/plain-clip/
 cask_install handbrake
 cask_install handbrakecli
 # The older logitech-harmony software requires the 'java' package
