@@ -163,10 +163,11 @@ debug() {
 
 # Leading colon means silent errors, script will handle them
 # Colon after a parameter, means that parameter has an argument in $OPTARG
-while getopts ":hH:" opt; do
+while getopts ":hH:x" opt; do
   case $opt in
     h) usage ; exit 0 ;;
     H) HOSTNAME=$OPTARG ;;
+    x) echo "Turning on tracing" ; set -x ;;
     \?) echo "Invalid option: -$OPTARG" >&2 ;;
   esac
 done
