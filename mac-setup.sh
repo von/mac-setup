@@ -30,7 +30,6 @@ END
 BREW="brew"
 PIP="pip"
 RUBY="ruby"
-SUDO="sudo -H"  # -H sets $HOME to target user
 
 ######################################################################
 #
@@ -56,7 +55,7 @@ brew_install() {
   _formula=$1
   brew_installed ${_formula} && return 0
   message "Installing brew formula \"${@}\""
-  ${SUDO} ${BREW} install ${_formula} "${@}"
+  ${BREW} install ${_formula} "${@}"
 }
 
 cask_installed() {
@@ -73,7 +72,7 @@ cask_install() {
   _formula=$1
   cask_installed ${_formula} && return 0
   message "Installing cask formula \"${@}\""
-  ${SUDO} ${BREW} cask install ${_formula} "${@}"
+  ${BREW} cask install ${_formula} "${@}"
 }
 
 ######################################################################
@@ -92,13 +91,13 @@ pip_install() {
   _package=$1
   pip_installed ${_package} && return 0
   message "Installing python package \"${@}\""
-  ${SUDO} ${PIP} install ${_package}
+  ${PIP} install ${_package}
 }
 
 # Update all python packages
 # Kudos: http://stackoverflow.com/a/3452888
 pip_update() {
-  ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${SUDO} ${PIP} install -U
+  ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${PIP} install -U
 }
 
 ######################################################################
@@ -109,15 +108,15 @@ install_homebrew() {
   # http://brew.sh
   command -v ${BREW} >/dev/null 2>&1 && return 0
   message "Installing Homebrew"
-  ${SUDO} ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  ${SUDO} ${BREW} doctor
+  ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ${BREW} doctor
 }
 
 upgrade_homebrew() {
   echo "Updating homebrew"
-  ${SUDO} ${BREW} update
-  ${SUDO} ${BREW} upgrade
-  ${SUDO} ${BREW} cleanup
+  ${BREW} update
+  ${BREW} upgrade
+  ${BREW} cleanup
 }
 
 install_cask() {
