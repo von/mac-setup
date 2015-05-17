@@ -98,7 +98,6 @@ pip_install() {
 # Update all python packages
 # Kudos: http://stackoverflow.com/a/3452888
 pip_update() {
-pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U
   ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${SUDO} ${PIP} install -U
 }
 
