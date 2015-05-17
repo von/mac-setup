@@ -1,5 +1,5 @@
 #!/bin/sh
-# Set up a Mac the way I like it
+# Set up a Mac the way I like it. Subsequently upgrade all the software.
 #
 # Kudos:
 # https://gist.github.com/brandonb927/3195465
