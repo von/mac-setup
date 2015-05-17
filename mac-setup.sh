@@ -255,10 +255,6 @@ pip_install path.py  # https://github.com/jaraco/path.py
 pip_install requests  # http://docs.python-requests.org/
 pip_install pyyaml  # Requires libyaml
 
-# Upgrade pip to work with python3
-message "Upgrading pip3"
-pip3 install --upgrade pip
-
 pip_update
 
 expand_save_panels
