@@ -125,12 +125,23 @@ install_cask() {
 }
 
 ######################################################################
+
+sudo_init() {
+  # Ask for the administrator password upfront and run a keep-alive to update
+  # existing `sudo` time stamp until script has finished
+  # Kudos: https://gist.github.com/brandonb927/3195465
+  sudo -v
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+}
+
+######################################################################
 #
 # Configuration commands
 
 set_hostname() {
   _hostname=$1
   message "Setting hostname to ${_hostname}"
+  sudo_init
   sudo scutil --set ComputerName ${_hostname}
   sudo scutil --set HostName ${_hostname}
   sudo scutil --set LocalHostName ${_hostname}
@@ -173,14 +184,6 @@ while getopts ":hH:x" opt; do
 done
 
 shift $(($OPTIND - 1))
-
-######################################################################
-
-# Ask for the administrator password upfront and run a keep-alive to update
-# existing `sudo` time stamp until script has finished
-# Kudos: https://gist.github.com/brandonb927/3195465
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ######################################################################
 
@@ -245,8 +248,7 @@ pip_install Jinja2
 pip_install ipython
 pip_install readline
 pip_install pythonpy  # https://github.com/Russell91/pythonpy/
-# No python3 support
-#pip_install percol  # https://github.com/mooz/percol
+pip_install percol  # https://github.com/mooz/percol
 pip_install wget
 pip_install colorama
 pip_install uuid
