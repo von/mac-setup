@@ -115,7 +115,7 @@ install_homebrew() {
 upgrade_homebrew() {
   echo "Updating homebrew"
   ${BREW} update
-  ${BREW} upgrade
+  ${BREW} upgrade --all
   ${BREW} cleanup
 }
 
