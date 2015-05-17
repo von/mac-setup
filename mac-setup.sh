@@ -118,6 +118,7 @@ upgrade_homebrew() {
   echo "Updating homebrew"
   ${SUDO} ${BREW} update
   ${SUDO} ${BREW} upgrade
+  ${SUDO} ${BREW} cleanup
 }
 
 install_cask() {
