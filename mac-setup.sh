@@ -114,6 +114,8 @@ install_homebrew() {
   # http://brew.sh
   command -v ${BREW} >/dev/null 2>&1 && return 0
   message "Installing Homebrew"
+  sudo_init
+  sudo chown -R ${USER} /usr/local
   ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   ${BREW} doctor
 }
