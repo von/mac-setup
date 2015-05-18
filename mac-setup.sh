@@ -4,6 +4,9 @@
 # Kudos:
 # https://gist.github.com/brandonb927/3195465
 
+# Exit on any error
+set -o errexit
+
 ######################################################################
 #
 # Configuration
@@ -97,7 +100,10 @@ pip_install() {
 # Update all python packages
 # Kudos: http://stackoverflow.com/a/3452888
 pip_update() {
-  ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${PIP} install -U
+  echo "Updating python packages"
+  # Trying to ugrade an package that doesn't need it is an error,
+  # hence the '|| true'
+  ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${PIP} install -U || true
 }
 
 ######################################################################
