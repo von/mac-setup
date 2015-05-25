@@ -250,6 +250,8 @@ cask_install handbrakecli
 # my older 880 remote,
 cask_install logitech-myharmony
 
+pip_update
+
 pip_install pyzmq
 pip_install tornado
 pip_install Jinja2
@@ -264,8 +266,6 @@ pip_install pyCLI  # https://pythonhosted.org/pyCLI/
 pip_install path.py  # https://github.com/jaraco/path.py
 pip_install requests  # http://docs.python-requests.org/
 pip_install pyyaml  # Requires libyaml
-
-pip_update
 
 expand_save_panels
 
