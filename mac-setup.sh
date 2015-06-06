@@ -103,8 +103,6 @@ pip_install() {
   fi
 }
 
-# Update all python packages
-# Kudos: http://stackoverflow.com/a/3452888
 pip_update() {
   echo "Updating pip"
   pip install --upgrade pip
