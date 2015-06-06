@@ -100,6 +100,8 @@ pip_install() {
 # Update all python packages
 # Kudos: http://stackoverflow.com/a/3452888
 pip_update() {
+  echo "Updating pip"
+  pip install --upgrade pip
   echo "Updating python packages"
   # Trying to ugrade an package that doesn't need it is an error,
   # hence the '|| true'
