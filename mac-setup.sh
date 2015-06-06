@@ -103,6 +103,7 @@ pip_install() {
   fi
 }
 
+# TODO: Sometimes this seems to just reinstall current version
 pip_update() {
   echo "Updating pip"
   pip install --upgrade pip
