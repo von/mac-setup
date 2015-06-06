@@ -3,6 +3,8 @@
 #
 # Kudos:
 # https://gist.github.com/brandonb927/3195465
+#
+# TODO: An upgrade of python requires a reinstall of MacVim
 
 # Exit on any error
 set -o errexit
