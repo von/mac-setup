@@ -92,9 +92,13 @@ pip_installed() {
 
 pip_install() {
   _package=$1
-  pip_installed ${_package} && return 0
-  message "Installing python package \"${@}\""
-  ${PIP} install ${_package}
+  if pip_installed ${_package} ; then
+    message "Updating python package \"${@}\""
+    ${PIP} install -U ${_package}
+  else
+    message "Installing python package \"${@}\""
+    ${PIP} install ${_package}
+  fi
 }
 
 # Update all python packages
@@ -102,10 +106,6 @@ pip_install() {
 pip_update() {
   echo "Updating pip"
   pip install --upgrade pip
-  echo "Updating python packages"
-  # Trying to ugrade an package that doesn't need it is an error,
-  # hence the '|| true'
-  ${PIP} freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 ${PIP} install -U || true
 }
 
 ######################################################################
