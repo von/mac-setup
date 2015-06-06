@@ -86,7 +86,7 @@ pip_installed() {
   # Return 0 if python package installed, 1 otherwise
   # Arguments: package
   _package=${1}
-  ${PIP} freeze | grep ${_package} >/dev/null 2>&1 && return 0
+  ${PIP} freeze | grep -i ${_package} >/dev/null 2>&1 && return 0
   return 1
 }
 
