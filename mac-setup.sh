@@ -252,6 +252,7 @@ cask_install handbrakecli
 # The logitech-myharmony software works with the Harmony One, but not
 # my older 880 remote,
 cask_install logitech-myharmony
+cask_install radiant-player  # Google music player
 
 pip_update
 
