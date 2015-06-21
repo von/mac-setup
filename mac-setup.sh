@@ -171,6 +171,22 @@ finder_config() {
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 }
 
+set_shell() {
+  local _shell=${1}
+  test -x ${_shell} || { echo "${_shell} not found." ; exit 1 ; }
+  if test ${_shell} != ${SHELL} ; then
+    echo "Setting shell to ${_shell}"
+    sudo_init
+    if grep ${_shell} /etc/shells > /dev/null ; then
+      :  # Is already a registered shell
+    else
+      echo "Adding ${_shell} to /etc/shells"
+      sudo bash -c "echo ${_shell} >> /etc/shells"
+    fi
+    sudo chsh -s ${_shell} ${USER}
+  fi
+}
+
 ######################################################################
 
 message() {
@@ -204,6 +220,10 @@ fi
 
 install_homebrew
 upgrade_homebrew
+
+# Install zsh and change out path to it
+brew_install zsh
+set_shell /usr/local/bin/zsh
 
 brew_install tmux
 brew_install reattach-to-user-namespace --wrap-pbcopy-and-pbpaste
