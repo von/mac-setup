@@ -216,6 +216,7 @@ brew_install git tig
 brew_install wget
 brew_install markdown
 brew_install ctags-exuberant
+brew_install cmake  # Needed for YouCompleteMe
 brew_install gpg2
 brew_install pinentry-mac
 brew_install keybase
