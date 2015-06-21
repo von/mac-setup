@@ -225,7 +225,7 @@ brew_install mr
 brew_install moreutils
 brew_install vifm
 brew_install libyaml
-brew_install abcde flac
+brew_install abcde flac lame eyeD3
 
 # Overrides older version that comes with MacOSX
 brew_install macvim --override-system-vim
