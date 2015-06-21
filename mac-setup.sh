@@ -174,7 +174,8 @@ finder_config() {
 set_shell() {
   local _shell=${1}
   test -x ${_shell} || { echo "${_shell} not found." ; exit 1 ; }
-  if test ${_shell} != ${SHELL} ; then
+  local _current_shell=$(id -P | cut -d : -f 10)
+  if test ${_shell} != ${_current_shell} ; then
     echo "Setting shell to ${_shell}"
     sudo_init
     if grep ${_shell} /etc/shells > /dev/null ; then
