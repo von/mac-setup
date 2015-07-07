@@ -63,6 +63,13 @@ brew_install() {
   ${BREW} install ${_formula} "${@}"
 }
 
+formula_needs_update() {
+  # Return 0 if cask forumula needs updating, 1 otherwise
+  # Arguments: forumula
+  _formula=${1}
+  brew outdated | grep -w -i ${_formula} >/dev/null 2>&1
+}
+
 cask_installed() {
   # Return 0 if cask forumula installed, 1 otherwise
   # Arguments: forumula
@@ -121,13 +128,6 @@ install_homebrew() {
   sudo chown -R ${USER} /usr/local
   ${RUBY} -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   ${BREW} doctor
-}
-
-upgrade_homebrew() {
-  echo "Updating homebrew"
-  ${BREW} update
-  ${BREW} upgrade --all
-  ${BREW} cleanup
 }
 
 install_cask() {
@@ -220,7 +220,24 @@ if test -n "${HOSTNAME}" ; then
 fi
 
 install_homebrew
-upgrade_homebrew
+echo "Updating homebrew"
+${BREW} update
+
+# Special handling for python and macvim as if we update the first
+# we need to reinstall the latter.
+if formula_needs_update python ; then
+  echo "Upgrading python"
+  brew upgrade python
+  echo "Reinstalling macvim"
+  brew uninstall macvim && brew_install macvim --override-system-vim
+fi
+
+echo "Updating forumlas"
+${BREW} upgrade --all
+
+echo "Cleaning up formulas"
+${BREW} cleanup
+
 
 # Install zsh and change out path to it
 brew_install zsh
