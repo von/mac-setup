@@ -15,6 +15,8 @@ set -o errexit
 
 HOSTNAME=""  # Default is not to set hostname
 
+personal_install=0
+
 ######################################################################
 
 usage()
@@ -25,6 +27,7 @@ Usage: $0 [<options>]
 Options:
   -h              Print help and exit.
   -H <hostname>   Set hostname
+  -p              Install for personal laptop
 END
 }
 
@@ -206,6 +209,7 @@ while getopts ":hH:x" opt; do
   case $opt in
     h) usage ; exit 0 ;;
     H) HOSTNAME=$OPTARG ;;
+    p) personal_install=1;;
     x) echo "Turning on tracing" ; set -x ;;
     \?) echo "Invalid option: -$OPTARG" >&2 ;;
   esac
@@ -264,7 +268,9 @@ brew_install mr
 brew_install moreutils
 brew_install vifm
 brew_install libyaml
-brew_install abcde flac lame eyeD3
+if test $personal_install -eq 1 ; then
+  brew_install abcde flac lame eyeD3
+fi
 
 # Overrides older version that comes with MacOSX
 brew_install macvim --override-system-vim
@@ -277,22 +283,24 @@ cask_install skype
 cask_install dropbox
 cask_install android-file-transfer
 cask_install totalfinder
-cask_install wesnoth
 cask_install firefox
 cask_install sketchup
 cask_install hipchat
 cask_install picasa
 cask_install spark  # http://www.shadowlab.org/Software/spark.php
 cask_install plain-clip  # http://www.bluem.net/en/mac/plain-clip/
-cask_install handbrake
-cask_install handbrakecli
-# The older logitech-harmony software requires the 'java' package
-# and seems to be broken:
-#     LSOpenURLsWithRole() failed with error -10810 
-# The logitech-myharmony software works with the Harmony One, but not
-# my older 880 remote,
-cask_install logitech-myharmony
-cask_install music-manager  # Google Music Manager
+if test $personal_install -eq 1 ; then
+  cask_install wesnoth
+  cask_install handbrake
+  cask_install handbrakecli
+  # The older logitech-harmony software requires the 'java' package
+  # and seems to be broken:
+  #     LSOpenURLsWithRole() failed with error -10810 
+  # The logitech-myharmony software works with the Harmony One, but not
+  # my older 880 remote,
+  cask_install logitech-myharmony
+  cask_install music-manager  # Google Music Manager
+fi
 
 pip_update
 
