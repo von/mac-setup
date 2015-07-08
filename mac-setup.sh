@@ -270,6 +270,7 @@ brew_install vifm
 brew_install libyaml
 if test $personal_install -eq 1 ; then
   brew_install abcde flac lame eyeD3
+  brew_install ffmpeg
 fi
 
 # Overrides older version that comes with MacOSX
