@@ -232,7 +232,7 @@ ${BREW} update
 if formula_needs_update python ; then
   echo "Upgrading python"
   brew upgrade python
-  echo "Reinstalling macvim"
+  echo "Reinstalling macvim due to python upgrade"
   brew uninstall macvim && brew_install macvim --override-system-vim
 fi
 
