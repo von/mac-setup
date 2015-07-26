@@ -17,6 +17,11 @@ HOSTNAME=""  # Default is not to set hostname
 
 personal_install=0
 
+# Flags for macvim
+macvim_options="--override-system-vim"
+# For NeoComplete: https://github.com/Shougo/neocomplete.vim
+macvim_options+=" --with-cscope --with-lua --HEAD"
+
 ######################################################################
 
 usage()
@@ -233,7 +238,7 @@ if formula_needs_update python ; then
   echo "Upgrading python"
   brew upgrade python
   echo "Reinstalling macvim due to python upgrade"
-  brew uninstall macvim && brew_install macvim --override-system-vim
+  brew uninstall macvim && brew_install macvim ${macvim_options}
 fi
 
 echo "Updating forumlas"
@@ -274,7 +279,7 @@ if test $personal_install -eq 1 ; then
 fi
 
 # Overrides older version that comes with MacOSX
-brew_install macvim --override-system-vim
+brew_install macvim ${macvim_options}
 
 install_cask
 
