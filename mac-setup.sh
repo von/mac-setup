@@ -296,7 +296,7 @@ if test $personal_install -eq 1 ; then
   cask_install handbrakecli
   # The older logitech-harmony software requires the 'java' package
   # and seems to be broken:
-  #     LSOpenURLsWithRole() failed with error -10810 
+  #     LSOpenURLsWithRole() failed with error -10810
   # The logitech-myharmony software works with the Harmony One, but not
   # my older 880 remote,
   cask_install logitech-myharmony
