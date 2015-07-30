@@ -300,6 +300,7 @@ if test $personal_install -eq 1 ; then
   cask_install wesnoth
   cask_install handbrake
   cask_install handbrakecli
+  cask_install ripit  # I have a license
   # The older logitech-harmony software requires the 'java' package
   # and seems to be broken:
   #     LSOpenURLsWithRole() failed with error -10810
