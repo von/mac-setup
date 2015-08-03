@@ -288,6 +288,7 @@ cask_install google-chrome
 cask_install google-drive
 cask_install skype
 cask_install dropbox
+cask_install omnigraffle
 cask_install android-file-transfer
 cask_install totalfinder
 cask_install firefox
