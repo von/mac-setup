@@ -264,7 +264,6 @@ brew_install wget
 brew_install markdown
 brew_install ctags-exuberant
 brew_install cmake  # Needed for YouCompleteMe
-brew_install gpg2
 brew_install pinentry-mac
 brew_install keybase
 keybase config gpg gpg2
@@ -277,6 +276,11 @@ if test $personal_install -eq 1 ; then
   brew_install abcde flac lame eyeD3
   brew_install ffmpeg
   brew_install lsdvd
+
+  # For my work Mac I need the GPG Tools Suite (https://gpgtools.org/)
+  # for Apple Mail, but installing it via cask doesn't produce
+  # a version that works for Mail, so I do that by hand.
+  brew_install gpg2
 fi
 
 # Overrides older version that comes with MacOSX
