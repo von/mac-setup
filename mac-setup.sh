@@ -331,6 +331,7 @@ pip_install pyCLI  # https://pythonhosted.org/pyCLI/
 pip_install path.py  # https://github.com/jaraco/path.py
 pip_install requests  # http://docs.python-requests.org/
 pip_install pyyaml  # Requires libyaml
+pip_install envoy  # For genpass
 
 expand_save_panels
 
