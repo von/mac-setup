@@ -297,11 +297,11 @@ cask_install android-file-transfer
 cask_install totalfinder
 cask_install firefox
 cask_install sketchup
-cask_install hipchat
 cask_install picasa
 cask_install spark  # http://www.shadowlab.org/Software/spark.php
 cask_install plain-clip  # http://www.bluem.net/en/mac/plain-clip/
 if test $personal_install -eq 1 ; then
+  # Personal laptop
   cask_install wesnoth
   cask_install handbrake
   cask_install handbrakecli
@@ -313,6 +313,9 @@ if test $personal_install -eq 1 ; then
   # my older 880 remote,
   cask_install logitech-myharmony
   cask_install music-manager  # Google Music Manager
+else
+  # Work laptop
+  cask_install hipchat
 fi
 
 pip_update
