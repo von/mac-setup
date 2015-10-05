@@ -319,6 +319,7 @@ if test $personal_install -eq 1 ; then
 else
   # Work laptop
   cask_install hipchat
+  cask_install adobe-reader  # Preview doesn't work for all pdfs
 fi
 
 pip_update
