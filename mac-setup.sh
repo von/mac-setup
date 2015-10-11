@@ -52,6 +52,14 @@ OSX_VERSION=$(sw_vers | grep ProductVersion | cut -f 2)
 
 ######################################################################
 #
+# Read local configuration, if it exists
+
+_configuration=~/.mac-setup/config
+
+test -f ${_configuration} && source ${_configuration}
+
+######################################################################
+#
 # Brew helper functions
 
 brew_installed() {
