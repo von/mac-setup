@@ -15,7 +15,7 @@ set -o errexit
 
 HOSTNAME=""  # Default is not to set hostname
 
-personal_install=0
+PROFILE="default"
 
 # Flags for macvim
 macvim_options="--override-system-vim"
@@ -32,7 +32,7 @@ Usage: $0 [<options>]
 Options:
   -h              Print help and exit.
   -H <hostname>   Set hostname
-  -p              Install for personal laptop
+  -p <profile>    Set profile
 END
 }
 
@@ -210,17 +210,29 @@ debug() {
 
 # Leading colon means silent errors, script will handle them
 # Colon after a parameter, means that parameter has an argument in $OPTARG
-while getopts ":hH:x" opt; do
+while getopts ":hH:p:x" opt; do
   case $opt in
     h) usage ; exit 0 ;;
     H) HOSTNAME=$OPTARG ;;
-    p) personal_install=1;;
+    p) PROFILE=$OPTARG ;;
     x) echo "Turning on tracing" ; set -x ;;
     \?) echo "Invalid option: -$OPTARG" >&2 ;;
   esac
 done
 
 shift $(($OPTIND - 1))
+
+######################################################################
+
+case $PROFILE in
+  default|personal|work)
+    echo "Using profile ${PROFILE}"
+    ;;
+  *)
+    echo "Unrecognized profile: ${PROFILE}" >&2
+    exit 1
+    ;;
+esac
 
 ######################################################################
 
@@ -275,16 +287,18 @@ brew_install libyaml
 brew_install watch
 brew_install imagemagick
 brew install michaeldfallen/formula/git-radar
-if test $personal_install -eq 1 ; then
-  brew_install abcde flac lame eyeD3
-  brew_install ffmpeg
-  brew_install lsdvd
+case $PROFILE in
+  personal)
+    brew_install abcde flac lame eyeD3
+    brew_install ffmpeg
+    brew_install lsdvd
 
-  # For my work Mac I need the GPG Tools Suite (https://gpgtools.org/)
-  # for Apple Mail, but installing it via cask doesn't produce
-  # a version that works for Mail, so I do that by hand.
-  brew_install gpg2
-fi
+    # For my work Mac I need the GPG Tools Suite (https://gpgtools.org/)
+    # for Apple Mail, but installing it via cask doesn't produce
+    # a version that works for Mail, so I do that by hand.
+    brew_install gpg2
+    ;;
+esac
 
 # Overrides older version that comes with MacOSX
 brew_install macvim ${macvim_options}
@@ -304,24 +318,25 @@ cask_install picasa
 cask_install kindle
 cask_install spark  # http://www.shadowlab.org/Software/spark.php
 cask_install plain-clip  # http://www.bluem.net/en/mac/plain-clip/
-if test $personal_install -eq 1 ; then
-  # Personal laptop
-  cask_install wesnoth
-  cask_install handbrake
-  cask_install handbrakecli
-  cask_install ripit  # I have a license
-  # The older logitech-harmony software requires the 'java' package
-  # and seems to be broken:
-  #     LSOpenURLsWithRole() failed with error -10810
-  # The logitech-myharmony software works with the Harmony One, but not
-  # my older 880 remote,
-  cask_install logitech-myharmony
-  cask_install music-manager  # Google Music Manager
-else
-  # Work laptop
-  cask_install hipchat
-  cask_install adobe-reader  # Preview doesn't work for all pdfs
-fi
+case $PROFILE in
+  personal)
+    cask_install wesnoth
+    cask_install handbrake
+    cask_install handbrakecli
+    cask_install ripit  # I have a license
+    # The older logitech-harmony software requires the 'java' package
+    # and seems to be broken:
+    #     LSOpenURLsWithRole() failed with error -10810
+    # The logitech-myharmony software works with the Harmony One, but not
+    # my older 880 remote,
+    cask_install logitech-myharmony
+    cask_install music-manager  # Google Music Manager
+    ;;
+  work)
+    cask_install hipchat
+    cask_install adobe-reader  # Preview doesn't work for all pdfs
+    ;;
+esac
 
 pip_update
 
