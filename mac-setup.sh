@@ -294,7 +294,7 @@ brew_install vifm
 brew_install libyaml
 brew_install watch
 brew_install imagemagick
-brew install michaeldfallen/formula/git-radar
+brew_install michaeldfallen/formula/git-radar
 case $PROFILE in
   personal)
     brew_install abcde flac lame eyeD3
