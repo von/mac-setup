@@ -4,7 +4,7 @@
 # Kudos:
 # https://gist.github.com/brandonb927/3195465
 #
-# TODO: An upgrade of python requires a reinstall of MacVim
+# TODO: Find way to check if xcode licnsense needs to be accepted
 
 # Exit on any error
 set -o errexit
