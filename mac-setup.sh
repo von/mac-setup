@@ -342,6 +342,7 @@ case $PROFILE in
     # my older 880 remote,
     cask_install logitech-myharmony
     cask_install music-manager  # Google Music Manager
+    cask_install synology-assistant
     ;;
   work)
     cask_install hipchat
