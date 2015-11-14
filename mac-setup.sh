@@ -7,9 +7,6 @@
 # TODO: Find way to check if xcode licnsense needs to be accepted
 # TODO: Some casks need sudo, find way to detect and call sudo_init
 
-# Exit on any error
-set -o errexit
-
 ######################################################################
 #
 # Configuration
