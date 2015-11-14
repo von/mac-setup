@@ -116,8 +116,7 @@ pip_installed() {
 pip_install() {
   _package=$1
   if pip_installed ${_package} ; then
-    message "Updating python package \"${@}\""
-    ${PIP} install -U ${_package}
+    :
   else
     message "Installing python package \"${@}\""
     ${PIP} install ${_package}
@@ -128,6 +127,8 @@ pip_install() {
 pip_update() {
   echo "Updating pip"
   pip install --upgrade pip
+  echo "Updating pip packages"
+  pip list --outdated | cut -d " " -f 1 | xargs -n1 pip install -U
 }
 
 ######################################################################
