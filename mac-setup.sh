@@ -338,6 +338,7 @@ case $PROFILE in
     # Now it runs, but MacOSX 10.10.5 is not supported.
     # The logitech-myharmony software works with the Harmony One, but not
     # my older 880 remote,
+    # myharmony requires silverlight - may want to install that too?
     cask_install logitech-myharmony
     cask_install music-manager  # Google Music Manager
     cask_install synology-assistant
