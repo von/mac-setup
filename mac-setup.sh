@@ -316,6 +316,7 @@ cask_install omnigraffle
 cask_install android-file-transfer
 cask_install commander-one
 cask_install firefox
+cask_install evernote
 cask_install sketchup
 cask_install picasa
 cask_install kindle
