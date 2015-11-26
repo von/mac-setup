@@ -299,11 +299,6 @@ case $PROFILE in
     brew_install abcde flac lame eyeD3
     brew_install ffmpeg
     brew_install lsdvd
-
-    # For my work Mac I need the GPG Tools Suite (https://gpgtools.org/)
-    # for Apple Mail, but installing it via cask doesn't produce
-    # a version that works for Mail, so I do that by hand.
-    # TODO: Try 'gpgtools' cask for work laptop
     brew_install gpg2
     ;;
 esac
@@ -346,6 +341,7 @@ case $PROFILE in
   work)
     cask_install hipchat
     cask_install adobe-reader  # Preview doesn't work for all pdfs
+    cask_install gpgtools  # For GPG support in Mail
     ;;
 esac
 
