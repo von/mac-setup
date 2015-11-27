@@ -296,7 +296,10 @@ brew_install imagemagick
 brew_install michaeldfallen/formula/git-radar
 case $PROFILE in
   personal)
-    brew_install abcde flac lame eyeD3
+    brew_install abcde
+    brew_install flac
+    brew_install lame
+    brew_install eyeD3
     brew_install ffmpeg
     brew_install lsdvd
     brew_install gpg2
