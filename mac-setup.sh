@@ -320,6 +320,7 @@ cask_install evernote
 cask_install sketchup
 cask_install picasa
 cask_install kindle
+cask_install send-to-kindle
 cask_install spark  # http://www.shadowlab.org/Software/spark.php
 cask_install plain-clip  # http://www.bluem.net/en/mac/plain-clip/
 cask_install hiarcs-chess-explorer  # I have a license
