@@ -389,5 +389,9 @@ expand_save_panels
 
 vim_neobundle_update
 
+# List all system software updates available
+# TODO: Once I'm comfortable actually update, possibly with -r for recommended
+softwareupdate --list
+
 echo "Success."
 exit 0
