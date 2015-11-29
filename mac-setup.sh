@@ -133,6 +133,18 @@ pip_update() {
 
 ######################################################################
 #
+# VIM functions
+
+vim_neobundle_update() {
+  echo "Updating VIM bundles"
+  # "-T dumb" lets me see all the output
+  # "set nomore" turns off waiting for user during output
+  # "NeoBundleClean!" cleans all unused bundles without asking
+  vim -T dumb -c "set nomore|NeoBundleUpdate|NeoBundleClean!|quit"
+}
+
+######################################################################
+#
 # Top-level installation commands
 
 install_homebrew() {
@@ -371,6 +383,8 @@ pip_install pyyaml  # Requires libyaml
 pip_install envoy  # For genpass
 
 expand_save_panels
+
+vim_neobundle_update
 
 echo "Success."
 exit 0
