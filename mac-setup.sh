@@ -139,8 +139,11 @@ vim_neobundle_update() {
   echo "Updating VIM bundles"
   # "-T dumb" lets me see all the output
   # "set nomore" turns off waiting for user during output
+  vim -T dumb -c "set nomore|NeoBundleUpdate|quit"
+
+  echo "Cleaning VIM bundles"
   # "NeoBundleClean!" cleans all unused bundles without asking
-  vim -T dumb -c "set nomore|NeoBundleUpdate|NeoBundleClean!|quit"
+  vim -T dumb -c "set nomore|NeoBundleClean!|quit"
 }
 
 ######################################################################
