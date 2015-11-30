@@ -363,7 +363,8 @@ case $PROFILE in
   work)
     cask_install hipchat
     cask_install adobe-reader  # Preview doesn't work for all pdfs
-    cask_install gpgtools  # For GPG support in Mail
+    # TODO: The following is not working. See Issue in my Work Asana.
+    #cask_install gpgtools  # For GPG support in Mail
     ;;
 esac
 
