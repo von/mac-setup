@@ -357,7 +357,6 @@ case $PROFILE in
     # my older 880 remote,
     # myharmony requires silverlight - may want to install that too?
     cask_install logitech-myharmony
-    cask_install music-manager  # Google Music Manager
     cask_install synology-assistant
     ;;
   work)
