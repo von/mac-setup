@@ -309,6 +309,7 @@ brew_install libyaml
 brew_install watch
 brew_install imagemagick
 brew_install michaeldfallen/formula/git-radar
+brew_install md5sha1sum  # Needed for abcde, but generally useful
 case $PROFILE in
   personal)
     brew_install abcde
