@@ -312,7 +312,11 @@ brew_install michaeldfallen/formula/git-radar
 brew_install md5sha1sum  # Needed for abcde, but generally useful
 case $PROFILE in
   personal)
-    brew_install abcde
+    # abcde is currently broken:
+    #  http://abcde.einval.com/bugzilla/show_bug.cgi?id=22
+    # As is cd-discid:
+    #  https://github.com/Homebrew/homebrew/issues/46267
+    #brew_install abcde
     brew_install flac
     brew_install lame
     brew_install eyeD3
