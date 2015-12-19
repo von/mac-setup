@@ -300,7 +300,6 @@ brew_install ctags-exuberant
 brew_install cmake  # Needed for YouCompleteMe
 brew_install pinentry-mac
 brew_install keybase
-keybase config gpg gpg2
 brew_install jrnl
 brew_install mr
 brew_install moreutils
