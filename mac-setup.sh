@@ -4,7 +4,7 @@
 # Kudos:
 # https://gist.github.com/brandonb927/3195465
 #
-# TODO: Find way to check if xcode licnsense needs to be accepted
+# TODO: Find way to check if Xcode license needs to be accepted
 # TODO: Some casks need sudo, find way to detect and call sudo_init
 
 ######################################################################
@@ -61,8 +61,8 @@ test -f ${_configuration} && source ${_configuration}
 # Brew helper functions
 
 brew_installed() {
-  # Return 0 if forumula installed, 1 otherwise
-  # Arguments: forumula
+  # Return 0 if formula installed, 1 otherwise
+  # Arguments: formula
   _formula=${1}
   ${BREW} list ${_formula} >/dev/null 2>&1 && return 0
   return 1
@@ -70,7 +70,7 @@ brew_installed() {
 
 brew_install() {
   # Install formula if not already installed
-  # Arguments: forumla [<options>]
+  # Arguments: formula [<options>]
   _formula=$1
   brew_installed ${_formula} && return 0
   message "Installing brew formula \"${@}\""
@@ -78,15 +78,15 @@ brew_install() {
 }
 
 formula_needs_update() {
-  # Return 0 if cask forumula needs updating, 1 otherwise
-  # Arguments: forumula
+  # Return 0 if cask formula needs updating, 1 otherwise
+  # Arguments: formula
   _formula=${1}
   brew outdated | grep -w -i ${_formula} >/dev/null 2>&1
 }
 
 cask_installed() {
-  # Return 0 if cask forumula installed, 1 otherwise
-  # Arguments: forumula
+  # Return 0 if cask formula installed, 1 otherwise
+  # Arguments: formula
   _formula=${1}
   ${BREW} cask list ${_formula} >/dev/null 2>&1 && return 0
   return 1
@@ -94,7 +94,7 @@ cask_installed() {
 
 cask_install() {
   # Install cask formula if not already installed
-  # Arguments: forumla [<options>]
+  # Arguments: formula [<options>]
   _formula=$1
   cask_installed ${_formula} && return 0
   message "Installing cask formula \"${@}\""
@@ -266,7 +266,7 @@ install_homebrew
 echo "Updating homebrew"
 ${BREW} update
 
-# Special handling for python and macvim as if we update the first
+# Special handling for python and macvim as if we update the former
 # we need to reinstall the latter.
 if formula_needs_update python ; then
   echo "Upgrading python"
@@ -275,7 +275,7 @@ if formula_needs_update python ; then
   brew uninstall macvim && brew_install macvim ${macvim_options}
 fi
 
-echo "Updating forumlas"
+echo "Updating formulas"
 ${BREW} upgrade --all
 
 echo "Cleaning up formulas"
